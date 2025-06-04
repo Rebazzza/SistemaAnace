@@ -119,9 +119,7 @@ public class GUIVendedor extends javax.swing.JFrame {
         new GUIRegistrarCliente().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
