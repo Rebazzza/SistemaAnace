@@ -1,0 +1,13 @@
+
+PRODUCTOS: 
+Codigo: 001
+Nombre: Lapicero
+Marca: Artesco
+ Stock: 30
+-----------------------------------------------
+PRODUCTOS: 
+Codigo: 002
+Nombre: Goma en barra
+Marca: Faber Castell
+ Stock: 50
+-----------------------------------------------
