@@ -55,11 +55,7 @@ public class Marca {
         productos.add(p);
     }
 
-    @Override
-    public String toString() {
-        return "Marca{" + "codigo=" + codigo + ", nombre=" + nombre + ", productos=" + productos + '}';
-    }
-
+    
     
     
 }
