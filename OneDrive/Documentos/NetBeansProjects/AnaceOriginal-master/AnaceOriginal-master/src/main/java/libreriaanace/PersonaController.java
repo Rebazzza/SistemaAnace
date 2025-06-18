@@ -214,7 +214,10 @@ public class PersonaController {
             mostrarError("Nombre no puede estar vacio");
             return;
         }
-
+        if(dni.isEmpty()){
+            mostrarError("DNI no puede ser vacio");
+                    return;
+        }
         if (existeEmpleadoPorDNI(dni)) {
             mostrarError("DNI ya existente");
             return;

@@ -56,6 +56,14 @@ public class Inventario {
         } else {
             mostrarError("Marca no encontrada");
         }
+        if(stockStr.isEmpty()){
+            mostrarError("El stock no puede ser vacío");
+            return;
+        }
+        if(precioStr.isEmpty()){
+            mostrarError("El precio no puede ser vacío");
+            return;
+        }
         if (codigoMarca.isEmpty()) {
             mostrarError("El codigo de marca no puede estar vacío");
             return;
@@ -332,7 +340,8 @@ public class Inventario {
             ps.setInt(3, p.getStock());
             ps.setDouble(4, p.getPrecio());
             ps.setString(5, p.getCodigo());
-
+            
+            
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {

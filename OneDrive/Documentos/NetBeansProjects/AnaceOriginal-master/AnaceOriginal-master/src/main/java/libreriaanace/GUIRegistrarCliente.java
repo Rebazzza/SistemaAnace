@@ -37,7 +37,6 @@ public class GUIRegistrarCliente extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -69,16 +68,6 @@ public class GUIRegistrarCliente extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(34, 90, 146));
         jLabel6.setText("Direccion:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 131, -1));
-
-        jButton2.setBackground(new java.awt.Color(34, 90, 146));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Registrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 140, 40));
 
         jLabel7.setForeground(new java.awt.Color(34, 90, 146));
         jLabel7.setText("Nombre:");
@@ -157,10 +146,6 @@ public class GUIRegistrarCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -168,7 +153,6 @@ public class GUIRegistrarCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
