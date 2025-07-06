@@ -51,8 +51,8 @@ public class Inventario {
         codigoMarca = codigoMarca.trim();
         stockStr = stockStr.trim();
         precioStr = precioStr.trim();
-        if (existeMarca(codigo)) {
-
+        if (!existeMarca(codigo)) {
+            
         } else {
             mostrarError("Marca no encontrada");
         }
@@ -491,7 +491,9 @@ public class Inventario {
     public DefaultTableModel MostrarProductos() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
-        modelo.addColumn("Marca");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Stock");
+        modelo.addColumn("Precio");
 
         Cconexion con = new Cconexion();
         Connection conexion = con.establecerConexion();
@@ -553,4 +555,39 @@ public class Inventario {
 
         return totalActual;
     }
+    
+public boolean verificarStockSuficiente(String codigoProducto, int cantidadRequerida) {
+    Cconexion conexion = new Cconexion();
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    try {
+        conn = conexion.establecerConexion();
+        String sql = "SELECT STOCK FROM PRODUCTO WHERE CODIGO = ?";
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, codigoProducto);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            int stockDisponible = rs.getInt("STOCK");
+            return cantidadRequerida <= stockDisponible;
+        } else {
+            // No se encontró el producto
+            return false;
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
 }

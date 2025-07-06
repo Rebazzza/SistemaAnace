@@ -23,7 +23,7 @@ public class GUIVenta extends javax.swing.JFrame {
     double descuento = 0;
 
     public GUIVenta(Empleado e) {
-        
+
         initComponents();
         this.em = e;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -58,6 +58,7 @@ public class GUIVenta extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -156,6 +157,16 @@ public class GUIVenta extends javax.swing.JFrame {
         jLabel8.setText("Codigo:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 50, -1));
 
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setForeground(new java.awt.Color(34, 90, 146));
+        jButton8.setText("Mostrar Producto");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, 20));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 95, 150, 242));
 
         jSeparator1.setBackground(new java.awt.Color(34, 90, 146));
@@ -176,7 +187,7 @@ public class GUIVenta extends javax.swing.JFrame {
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Total:");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 57, 23));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 57, 23));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setForeground(new java.awt.Color(34, 90, 146));
@@ -222,19 +233,14 @@ public class GUIVenta extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int cantidad;
-        try {
-        cantidad = Integer.parseInt(jTextField2.getText().trim());
-        // Llamada al método cuando presionas el botón agregar
-        
-        totalVenta = in.agregarProductoPorCodigo(jTextField4.getText().trim(), jTable1, cantidad, totalVenta);
-        jLabel9.setText(String.format("%.2f", totalVenta));
-            
-// Mostrar en JLabel
-        jLabel9.setText(String.format("%.2f", totalVenta));
-        
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(null, "Cantidad inválida.");
-    }
+        if (in.verificarStockSuficiente(jTextField4.getText().trim(), Integer.parseInt(jTextField2.getText().trim()))) {
+            cantidad = Integer.parseInt(jTextField2.getText().trim());
+            totalVenta = in.agregarProductoPorCodigo(jTextField4.getText().trim(), jTable1, cantidad, totalVenta);
+            jLabel9.setText(String.format("%.2f", totalVenta));
+            jLabel9.setText(String.format("%.2f", totalVenta));
+        }else{
+            in.mostrarError("Stock insuficiente");
+        }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -259,9 +265,13 @@ public class GUIVenta extends javax.swing.JFrame {
         } else {
             this.descuento = Double.parseDouble(jTextField3.getText());
             totalVenta = totalVenta - (totalVenta * Double.parseDouble(jTextField3.getText()));
-            jLabel9.setText(String.format("S/. %.2f", totalVenta));
+            jLabel9.setText(String.format("%.2f", totalVenta));
         }
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        new GUIMostrarProductos().setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     public boolean validarFecha(JDateChooser jdc) {
         Date fechaSeleccionada = jdc.getDate();
@@ -296,6 +306,7 @@ public class GUIVenta extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

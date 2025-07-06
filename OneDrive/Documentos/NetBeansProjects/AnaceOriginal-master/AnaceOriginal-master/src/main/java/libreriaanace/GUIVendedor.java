@@ -85,7 +85,7 @@ public class GUIVendedor extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 90, 146));
-        jLabel1.setText("LIBRERIA-ANACE");
+        jLabel1.setText("SADA");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(34, 90, 146));
